@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "IoT API v3"
+    return "IoT API v5"
 
 @app.route("/sensor")
 def sensor():
