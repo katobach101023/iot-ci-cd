@@ -1,16 +1,14 @@
-from flask import Flask, request, jsonify
+from flask import Flask, jsonify
+
 app = Flask(__name__)
 
-data = {"temperature": 0, "humidity": 0}
+@app.route("/")
+def home():
+    return "IoT API v1"
 
-@app.route("/iot", methods=["POST"])
-def post():
-    global data
-    data = request.json
-    return {"status": "ok"}
+@app.route("/sensor")
+def sensor():
+    return jsonify({"temp": 28, "humidity": 70})
 
-@app.route("/iot")
-def get():
-    return jsonify(data)
-
-app.run(host="0.0.0.0", port=5000)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
